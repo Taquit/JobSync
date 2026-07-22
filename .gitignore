@@ -1,0 +1,11 @@
+
+.env
+/venv/
+__pycache__
+/.vscode
+/logs
+/data/cv.json
+/data/parametros.json
+/data/vacantes.db
+/data/resultados_evaluacion.json
+/src/test_serpapi.py
