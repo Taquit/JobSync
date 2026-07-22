@@ -1,6 +1,3 @@
-# Requerir permisos de administrador (opcional pero recomendado)
-# #Requires -RunAsAdministrator
-
 # Definir la versión objetivo y la URL de descarga oficial
 $targetVersionStr = "3.14.6"
 $targetVersion = [version]$targetVersionStr
@@ -40,14 +37,13 @@ if ($pythonCmd) {
 # Ejecutar instalación solo si es necesario
 if ($installNeeded) {
     Write-Host "Descargando Python $targetVersionStr..." -ForegroundColor Cyan
-    Invoke-WebRequest -Uri $downloadUrl -OutFile $installerPath
+    # Agregamos -UseBasicParsing para evitar congelamientos en máquinas Windows nuevas
+    Invoke-WebRequest -Uri $downloadUrl -OutFile $installerPath -UseBasicParsing
 
     Write-Host "Instalando Python silenciosamente (esto puede tomar un minuto)..." -ForegroundColor Cyan
     
-    # Argumentos: Instalación silenciosa, para todos los usuarios y agregando Python al PATH
-    # Nota: Si es una actualización de la misma versión principal (ej. 3.12.3 a 3.12.4), el instalador la actualiza.
-    # Si es un salto grande (ej. 3.11 a 3.12), instala ambas pero 'PrependPath=1' hace que la nueva sea la predeterminada.
-    $installArgs = "/quiet InstallAllUsers=1 PrependPath=1 Include_test=0"
+    # Cambiamos InstallAllUsers=0 para que NO pida permisos de Administrador
+    $installArgs = "/quiet InstallAllUsers=0 PrependPath=1 Include_test=0"
 
     $process = Start-Process -FilePath $installerPath -ArgumentList $installArgs -Wait -PassThru
 
