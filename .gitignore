@@ -8,4 +8,5 @@ __pycache__
 /data/parametros.json
 /data/vacantes.db
 /data/resultados_evaluacion.json
+/data/backups/*
 /src/test_serpapi.py

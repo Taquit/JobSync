@@ -1,0 +1,109 @@
+{
+    "informacion_personal": {
+        "nombre": "Nombre Apellido",
+        "titulo_profesional": "Ingeniero en Sistemas Computacionales | Jr. Developer | Cloud Engineer",
+        "ubicacion": "Ciudad, País",
+        "contacto": {
+            "email": "correo@ejemplo.com",
+            "telefono": "+52 55 1234 5678",
+            "linkedin": "https://linkedin.com/in/usuario-ejemplo",
+            "portfolio_o_github": "https://github.com/usuario-ejemplo"
+        },
+        "idiomas": [
+            {
+                "idioma": "Español",
+                "nivel": "Nativo"
+            },
+            {
+                "idioma": "Inglés",
+                "nivel": "C1"
+            }
+        ]
+    },
+    "resumen_profesional": "Ingeniero en Sistemas Computacionales con experiencia en desarrollo de software, automatización de procesos y soluciones en la nube. Busco contribuir en proyectos innovadores, aplicando mis habilidades técnicas y capacidad de aprendizaje para optimizar sistemas y desarrollar nuevas tecnologías.",
+    "habilidades_tecnicas": {
+        "software_herramientas": [
+            "AWS, Python, Java, Javascript, SQL, HTML, CSS, Git, Docker, Kubernetes, Linux, Windows, PHP"
+        ],
+        "metodologias": [
+            "Scrum"
+        ],
+        "normativas_estandares": [
+            ""
+        ],
+        "maquinaria_equipo": [
+            ""
+        ],
+        "otras": [
+            ""
+        ]
+    },
+    "habilidades_blandas": [
+        "Resolución de problemas",
+        "Comunicación efectiva",
+        "Trabajo en equipo",
+        "Liderazgo"
+    ],
+    "experiencia_laboral": [
+        {
+            "puesto": "Desarrollador Freelance",
+            "empresa": "Nombre de la Empresa",
+            "ubicacion": "Ciudad, País",
+            "fecha_inicio": "2024-01",
+            "fecha_fin": null,
+            "actualmente": false,
+            "responsabilidades_y_logros": [
+                {
+                    "descripcion": "Diseño y desarrollo de sitios web para PyMEs, enfocándome en la automatización de procesos y la integración con sistemas en la nube.",
+                    "metrica": "Reducción del tiempo de implementación de nuevos clientes en un 40% gracias a la automatización."
+                }
+            ],
+            "herramientas_y_metodologias_usadas": [
+                "HTML, CSS, Javascript, PHP"
+            ]
+        }
+    ],
+    "educacion": [
+        {
+            "grado": "Ingeniería en Sistemas Computacionales",
+            "institucion": "Nombre de la Universidad",
+            "ubicacion": "Ciudad, País",
+            "fecha_inicio": "2025",
+            "fecha_graduacion": "2029",
+            "promedio": "8.5"
+        }
+    ],
+    "certificaciones": [
+        {
+            "nombre": "AWS Cloud Practitioner",
+            "entidad": "Amazon Web Services",
+            "fecha_obtencion": "2026-05",
+            "fecha_expiracion": null,
+            "credencial_url": "Opcional"
+        }
+    ],
+    "proyectos_destacados": [
+        {
+            "nombre": "Nombre del Proyecto",
+            "descripcion": "Diseñado para transformar flujos de datos, esta plataforma automatiza y optimiza el manejo de información, proporcionando soluciones eficientes y escalables para la gestión de datos.",
+            "herramientas_o_tecnologias": [
+                "Python, AWS, React, Typescript"
+            ],
+            "url_o_evidencia": "https://github.com/usuario-ejemplo/nombre-del-proyecto",
+            "fecha": "2026"
+        }
+    ],
+    "disponibilidad": {
+        "modalidad": [
+            "Presencial",
+            "Remoto",
+            "Híbrido"
+        ],
+        "tipo_contrato": [
+            "Tiempo completo",
+            "Freelance",
+            "Por proyecto"
+        ],
+        "fecha_disponible": "Inmediata / fecha estimada"
+    }
+}

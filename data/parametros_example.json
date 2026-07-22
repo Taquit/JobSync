@@ -1,0 +1,98 @@
+{
+    "busqueda_api": {
+        "palabras_clave_incluir": [
+            "Junior Developer",
+            "Trainee Developer",
+            "Desarrollador Frontend Jr",
+            "Node.js Junior",
+            "React Developer Trainee",
+            "Next.js Developer"
+        ],
+        "palabras_clave_excluir": [
+            "Senior",
+            "Lead",
+            "Gerente",
+            "Tech Lead",
+            "Arquitecto"
+        ],
+        "ubicacion": "Ciudad de México, México",
+        "modalidad": [
+            "Presencial",
+            "Remoto",
+            "Híbrido"
+        ],
+        "antiguedad_publicacion_dias": 15
+    },
+    "criterios_evaluacion_ia": {
+        "nivel_experiencia": {
+            "categoria": "Junior/Trainee",
+            "anos_minimos": 0,
+            "anos_maximos": 2
+        },
+        "requisitos_vacante_debe_mencionar": [
+            {
+                "requisito": "AWS",
+                "prioridad": "deseable"
+            },
+            {
+                "requisito": "JavaScript o Node.js",
+                "prioridad": "indispensable"
+            },
+            {
+                "requisito": "React o Next.js",
+                "prioridad": "deseable"
+            },
+            {
+                "requisito": "Prisma u ORMs",
+                "prioridad": "deseable"
+            }
+        ],
+        "habilidades_propias_a_destacar": [
+            "Desarrollo Fullstack (React/Next.js/Node.js)",
+            "Manejo de Bases de Datos con Prisma",
+            "Ecosistema moderno de JavaScript",
+            "AWS Cloud Practitioner Certificado",
+            "Python",
+            "Java",
+            "Javascript",
+            "SQL",
+            "HTML",
+            "CSS",
+            "Git",
+            "Docker",
+            "Kubernetes",
+            "Linux",
+            "Windows",
+            "PHP"
+        ],
+        "sectores_a_evitar": [
+            "Soporte Técnico Nivel 1",
+            "Call Center IT"
+        ],
+        "rango_salarial_esperado": {
+            "minimo": 15000,
+            "maximo": 35000,
+            "moneda": "MXN",
+            "negociable": true
+        },
+        "beneficios_deseados": [
+            {
+                "beneficio": "Horario flexible o medio tiempo (por estudios)",
+                "prioridad": "indispensable"
+            },
+            {
+                "beneficio": "Capacitación continua / Apoyo para certificaciones",
+                "prioridad": "deseable"
+            }
+        ]
+    },
+    "configuracion_ranking": {
+        "descartar_si_falta_indispensable": true,
+        "orden_prioridad_criterios": [
+            "requisitos_vacante_debe_mencionar",
+            "beneficios_deseados",
+            "rango_salarial_esperado",
+            "sectores_a_evitar"
+        ]
+    }
+}

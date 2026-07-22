@@ -12,6 +12,7 @@ class DBManager:
         # Asegurar que la carpeta exista
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self.crear_tablas()
+        self.actualizar_esquema()
 
     def crear_tablas(self):
         """Crea la tabla de vacantes si no existe."""
@@ -32,6 +33,18 @@ class DBManager:
                 fecha_guardado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         ''')
+        conexion.commit()
+        conexion.close()
+
+    def actualizar_esquema(self):
+        """Actualiza el esquema para agregar nuevas columnas si no existen."""
+        conexion = sqlite3.connect(self.db_path)
+        cursor = conexion.cursor()
+        try:
+            cursor.execute('ALTER TABLE vacantes ADD COLUMN estado TEXT DEFAULT "Pendiente"')
+        except sqlite3.OperationalError:
+            # La columna ya existe
+            pass
         conexion.commit()
         conexion.close()
 
@@ -73,8 +86,8 @@ class DBManager:
                     INSERT INTO vacantes (
                         uri_aplicacion, titulo, empresa, descripcion, 
                         porcentaje_compatibilidad, requisitos_cumplidos, 
-                        requisitos_faltantes, notas_match, recomendaciones_ats
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        requisitos_faltantes, notas_match, recomendaciones_ats, estado
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, "Pendiente")
                 ''', (
                     uri,
                     raw.get("titulo", ""),
@@ -87,8 +100,35 @@ class DBManager:
                     recom
                 ))
             except sqlite3.IntegrityError:
-                # Ya existe (puede pasar si intentamos guardar dos veces la misma vacante)
                 pass
                 
+        conexion.commit()
+        conexion.close()
+
+    def obtener_todas_vacantes(self) -> List[Dict]:
+        """Obtiene todas las vacantes almacenadas en la base de datos."""
+        conexion = sqlite3.connect(self.db_path)
+        conexion.row_factory = sqlite3.Row
+        cursor = conexion.cursor()
+        cursor.execute('SELECT * FROM vacantes ORDER BY porcentaje_compatibilidad DESC')
+        filas = cursor.fetchall()
+        conexion.close()
+        
+        vacantes = []
+        for fila in filas:
+            v = dict(fila)
+            # Decodificar JSONs
+            v["requisitos_cumplidos"] = json.loads(v["requisitos_cumplidos"]) if v["requisitos_cumplidos"] else []
+            v["requisitos_faltantes"] = json.loads(v["requisitos_faltantes"]) if v["requisitos_faltantes"] else []
+            v["recomendaciones_ats"] = json.loads(v["recomendaciones_ats"]) if v["recomendaciones_ats"] else []
+            vacantes.append(v)
+            
+        return vacantes
+
+    def actualizar_estado_vacante(self, uri_aplicacion: str, nuevo_estado: str):
+        """Actualiza el estado de una vacante (Pendiente, Aplicada, En proceso, Rechazada)."""
+        conexion = sqlite3.connect(self.db_path)
+        cursor = conexion.cursor()
+        cursor.execute('UPDATE vacantes SET estado = ? WHERE uri_aplicacion = ?', (nuevo_estado, uri_aplicacion))
         conexion.commit()
         conexion.close()
