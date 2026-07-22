@@ -1,8 +1,8 @@
-# 🚀 Agente de Búsqueda de Empleo con IA
+#  Agente de Búsqueda de Empleo con IA
 
 Un agente autónomo en Python diseñado para buscar, filtrar y evaluar ofertas de trabajo de manera inteligente utilizando Inteligencia Artificial. El agente cruza tu currículum vítae (CV) contra vacantes reales obtenidas de Google Jobs y te devuelve un análisis estructurado de tu nivel de compatibilidad con cada una.
 
-## 🌟 Características Principales
+##  Características Principales
 
 - **Extracción Automatizada**: Obtiene vacantes en tiempo real utilizando [SerpApi](https://serpapi.com/) (Google Jobs engine).
 - **Evaluación Inteligente**: Utiliza **Google Gemini 1.5 Pro** para actuar como un Headhunter Experto, analizando cada vacante contra tu perfil.
@@ -10,7 +10,7 @@ Un agente autónomo en Python diseñado para buscar, filtrar y evaluar ofertas d
 - **Prevención de Duplicados**: Incorpora una base de datos local (SQLite) que recuerda qué vacantes ya han sido procesadas para ahorrar tokens y tiempo en ejecuciones futuras.
 - **Altamente Configurable**: Permite definir criterios estrictos (salario, años de experiencia, habilidades obligatorias) mediante un archivo de configuración.
 
-## 📂 Estructura del Proyecto
+##  Estructura del Proyecto
 
 ```text
 Agente_V0/
@@ -29,13 +29,13 @@ Agente_V0/
 └── README.MD                   # Este archivo
 ```
 
-## ⚙️ Requisitos Previos
+##  Requisitos Previos
 
 - **Python 3.8+**
 - Una API Key de [SerpApi](https://serpapi.com/) (Para extraer las vacantes).
 - Una API Key de [Google Gemini](https://aistudio.google.com/app/apikey) (Para evaluar las vacantes).
 
-## 🚀 Instalación y Configuración
+##  Instalación y Configuración
 
 1. **Clona o descarga este repositorio.**
 2. **Crea y activa un entorno virtual** (Recomendado):
@@ -54,7 +54,7 @@ Agente_V0/
    GOOGLE_API_KEY=tu_llave_de_gemini_aqui
    ```
 
-## 📝 Preparando tus Datos
+##  Preparando tus Datos
 
 Antes de ejecutar el agente, debes configurar dos archivos en la carpeta `data/`:
 
@@ -64,7 +64,7 @@ Antes de ejecutar el agente, debes configurar dos archivos en la carpeta `data/`
    - `criterios_evaluacion_ia`: Reglas estrictas para el Headhunter (salario mínimo, habilidades indispensables).
    - `configuracion_ranking`: Reglas de descarte.
 
-## ▶️ Uso
+##  Uso
 
 Para iniciar la búsqueda y evaluación, simplemente ejecuta el orquestador principal:
 
