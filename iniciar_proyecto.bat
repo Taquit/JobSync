@@ -3,29 +3,39 @@ echo ===================================================
 echo   Iniciando JobSync IA - Headhunter
 echo ===================================================
 echo.
+[cite: 38]
 
 :: 1. Verificar si existe Python
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo [ERROR] Python no esta instalado o no esta en el PATH.
-    echo Por favor, ejecuta primero el script de instalacion de Python.
+    echo [INFO] Python no esta instalado o no esta en el PATH.
+    echo [INFO] Iniciando instalacion automatica de Python...
+    
+    :: Mandamos a llamar tu script de PowerShell saltando la restriccion de seguridad
+    powershell.exe -ExecutionPolicy Bypass -File ".\scrip_for_python.ps1"
+    
+    echo [INFO] Por favor, reinicia esta ventana despues de la instalacion.
     pause
     exit /b
 )
+[cite: 59, 60, 61]
 
 :: 2. Crear entorno virtual si no existe
 if not exist venv\ (
     echo [INFO] Creando entorno virtual local ^(venv^)...
     python -m venv venv
 )
+[cite: 39]
 
 :: 3. Activar el entorno virtual
 echo [INFO] Activando entorno virtual...
 call venv\Scripts\activate.bat
+[cite: 40]
 
 :: 4. Instalar dependencias
 echo [INFO] Verificando e instalando dependencias...
 pip install -r requirements.txt -q
+[cite: 40]
 
 :: 5. Verificar archivo .env
 if not exist .env (
@@ -41,6 +51,7 @@ if not exist .env (
     echo ===================================================
     pause
 )
+[cite: 40, 41]
 
 :: 6. Iniciar la aplicacion
 echo.
@@ -51,3 +62,4 @@ echo.
 streamlit run app.py
 
 pause
+[cite: 42, 43]
