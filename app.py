@@ -8,9 +8,8 @@ import subprocess
 import sys
 
 BASE_DIR = Path(__file__).resolve().parent
-# Agregar src al path para poder importar dependencias locales
-sys.path.append(str(BASE_DIR / "src"))
-from db.db_manager import DBManager
+
+from src.db.db_manager import DBManager
 
 # Configuracion de la pagina
 st.set_page_config(
@@ -45,7 +44,7 @@ def ejecutar_agente():
     with st.spinner("Buscando y evaluando vacantes con IA..."):
         try:
             result = subprocess.run(
-                ["python", str(BASE_DIR / "src" / "main.py")],
+                [sys.executable, str(BASE_DIR / "src" / "main.py")],
                 capture_output=True, text=True
             )
             if result.returncode == 0:
@@ -253,7 +252,6 @@ with st.sidebar:
 
     if st.button("Ejecutar Busqueda y Evaluacion", type="primary", use_container_width=True):
         ejecutar_agente()
-        st.rerun()
 
     st.divider()
     st.subheader("Archivos de Datos")

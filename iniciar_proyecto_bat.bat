@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0"
 echo ===================================================
 echo   Iniciando JobSync IA - Headhunter
 echo ===================================================
@@ -53,6 +54,6 @@ echo [INFO] Iniciando la aplicacion web...
 echo Se abrira en tu navegador automaticamente.
 echo Para cerrar el servidor, cierra esta ventana.
 echo.
-streamlit run app.py
+python -m streamlit run app.py
 
 pause
