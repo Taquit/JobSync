@@ -10,3 +10,5 @@ __pycache__
 /data/resultados_evaluacion.json
 /data/backups/*
 /src/test_serpapi.py
+/data/cv.json
+/data/parametros.json
