@@ -23,7 +23,7 @@ INSTRUCCIONES DE EJECUCIÓN:
 2. Sigue el 'orden_prioridad_criterios'. Si una vacante no cumple un requisito marcado como 'indispensable' y 'descartar_si_falta_indispensable' es true, EXCLÚYELA del resultado final (no la incluyas en el array de respuesta). 
 3. Considera equivalencias razonables (ej. "gestión de calidad" puede contar como relacionado a "ISO 9001"), pero indica en 'notas_match' cuando un requisito se cumplió de forma aproximada y no literal. 
 4. Para vacantes compatibles, genera recomendaciones de optimización ATS, resaltando 'habilidades_propias_a_destacar' que hagan match con la vacante. 
-5. Responde ÚNICAMENTE con un JSON válido, sin texto adicional antes o después, con esta estructura: 
+5. Responde ÚNICAMENTE y EXTRICTAMENTE con un JSON válido, sin texto adicional antes o después, con esta estructura: 
 
 {{
   "vacantes_evaluadas": [

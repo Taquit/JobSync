@@ -22,7 +22,16 @@ class BaseJobExtractor(ABC):
         """
         pass
 
-    def estandarizar_vacante(self, titulo: str, empresa: str, descripcion: str, uri: str, requisitos: str = "No especificados") -> Dict[str, str]:
+    def estandarizar_vacante(
+        self, 
+        titulo: str, 
+        empresa: str, 
+        descripcion: str, 
+        uri: str, 
+        requisitos: str = "No especificados",
+        tipo_horario: str = "No especificado",
+        publicado_hace: str = "Fecha desconocida"
+    ) -> Dict[str, str]:
         """
         Lógica común para formatear la salida.
         Asegura que todas las vacantes, sin importar de dónde vengan, 
@@ -33,5 +42,7 @@ class BaseJobExtractor(ABC):
             "empresa": empresa,
             "descripcion": descripcion,
             "requisitos": requisitos,
-            "uri_aplicacion": uri
+            "uri_aplicacion": uri,
+            "tipo_horario": tipo_horario,
+            "publicado_hace": publicado_hace
         }

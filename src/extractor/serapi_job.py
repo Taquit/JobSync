@@ -32,11 +32,22 @@ class SerpApiJobExtractor(BaseJobExtractor):
             
             if "jobs_results" in datos:
                 for job in datos["jobs_results"]:
+                    # Obtener link directo
+                    apply_options = job.get("apply_options", [])
+                    enlace_directo = apply_options[0].get("link") if apply_options else job.get("share_link", "Enlace no disponible")
+                    
+                    # Obtener extensiones
+                    extensiones = job.get("detected_extensions", {})
+                    tipo_horario = extensiones.get("schedule_type", "No especificado")
+                    publicado_hace = extensiones.get("posted_at", "Fecha desconocida")
+
                     vacante = self.estandarizar_vacante(
                         titulo=job.get("title", "Sin título"),
                         empresa=job.get("company_name", "Empresa oculta"),
                         descripcion=job.get("description", "Sin descripción"),
-                        uri=job.get("share_link", "Enlace no disponible")
+                        uri=enlace_directo,
+                        tipo_horario=tipo_horario,
+                        publicado_hace=publicado_hace
                     )
                     vacantes_limpias.append(vacante)
                     
