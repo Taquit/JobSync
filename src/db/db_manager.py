@@ -81,6 +81,11 @@ class DBManager:
             req_falt = json.dumps(evaluacion.get("requisitos_faltantes", []), ensure_ascii=False)
             recom = json.dumps(evaluacion.get("recomendaciones_ats", []), ensure_ascii=False)
             
+            # Si la IA no devolvió evaluación, significa que fue descartada por los filtros estrictos
+            notas_match = evaluacion.get("notas_match", "")
+            if not evaluacion:
+                notas_match = "Vacante descartada automáticamente por la IA al no cumplir con algún requisito indispensable."
+            
             try:
                 cursor.execute('''
                     INSERT INTO vacantes (
@@ -96,7 +101,7 @@ class DBManager:
                     evaluacion.get("porcentaje_compatibilidad", 0),
                     req_cump,
                     req_falt,
-                    evaluacion.get("notas_match", ""),
+                    notas_match,
                     recom
                 ))
             except sqlite3.IntegrityError:

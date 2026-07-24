@@ -31,7 +31,15 @@ class SerpApiJobExtractor(BaseJobExtractor):
                 continue
             
             if "jobs_results" in datos:
+                palabras_excluir = [p.lower() for p in self.parametros_busqueda.get("palabras_clave_excluir", [])]
+                
                 for job in datos["jobs_results"]:
+                    titulo_job = job.get("title", "").lower()
+                    
+                    # Ignorar si el título contiene alguna palabra excluida (ej. "senior", "lead")
+                    if any(excluir in titulo_job for excluir in palabras_excluir if excluir):
+                        continue
+                        
                     # Obtener link directo
                     apply_options = job.get("apply_options", [])
                     enlace_directo = apply_options[0].get("link") if apply_options else job.get("share_link", "Enlace no disponible")

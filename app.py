@@ -18,6 +18,11 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# --- Mostrar mensajes de exito pendientes ---
+if 'mensaje_exito' in st.session_state:
+    st.toast(st.session_state.mensaje_exito, icon="✅")
+    del st.session_state.mensaje_exito
+
 # --- Funciones Auxiliares ---
 
 def cargar_json(ruta):
@@ -277,7 +282,8 @@ with st.sidebar:
                 try:
                     nuevo_cv = json.loads(cv_text)
                     guardar_json(ruta_cv, nuevo_cv)
-                    st.success("CV guardado correctamente.")
+                    st.session_state.mensaje_exito = "CV guardado correctamente."
+                    st.rerun()
                 except json.JSONDecodeError as e:
                     st.error(f"JSON invalido en la linea {e.lineno}, columna {e.colno}: {e.msg}")
         else:
@@ -286,7 +292,7 @@ with st.sidebar:
                 guardar_cv = st.form_submit_button("Guardar CV", type="primary")
                 if guardar_cv:
                     guardar_json(ruta_cv, cv_editado)
-                    st.success("CV guardado correctamente.")
+                    st.session_state.mensaje_exito = "CV guardado correctamente."
                     st.rerun()
 
     # --- Parametros ---
@@ -304,7 +310,8 @@ with st.sidebar:
                 try:
                     nuevos_params = json.loads(params_text)
                     guardar_json(ruta_params, nuevos_params)
-                    st.success("Parametros guardados correctamente.")
+                    st.session_state.mensaje_exito = "Parámetros guardados correctamente."
+                    st.rerun()
                 except json.JSONDecodeError as e:
                     st.error(f"JSON invalido en la linea {e.lineno}, columna {e.colno}: {e.msg}")
         else:
@@ -313,7 +320,7 @@ with st.sidebar:
                 guardar_params = st.form_submit_button("Guardar Parametros", type="primary")
                 if guardar_params:
                     guardar_json(ruta_params, params_editado)
-                    st.success("Parametros guardados correctamente.")
+                    st.session_state.mensaje_exito = "Parámetros guardados correctamente."
                     st.rerun()
 
     # --- Backups disponibles ---
