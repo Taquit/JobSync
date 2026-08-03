@@ -287,6 +287,21 @@ with st.sidebar:
                 except json.JSONDecodeError as e:
                     st.error(f"JSON invalido en la linea {e.lineno}, columna {e.colno}: {e.msg}")
         else:
+            st.markdown("#####  Autocompletar con PDF")
+            archivo_pdf = st.file_uploader("Sube tu CV en formato PDF", type=["pdf"], key="pdf_uploader")
+            if archivo_pdf is not None:
+                if st.button("Analizar y rellenar CV", key="btn_analizar_pdf"):
+                    from src.ai_agent.pdf_parser import parsear_cv_desde_pdf
+                    with st.spinner("Leyendo y analizando PDF con Gemini..."):
+                        try:
+                            nuevo_cv_data = parsear_cv_desde_pdf(archivo_pdf)
+                            guardar_json(ruta_cv, nuevo_cv_data)
+                            st.session_state.mensaje_exito = "CV autocompletado correctamente desde el PDF."
+                            st.rerun()
+                        except Exception as e:
+                            st.error(f"Error al analizar el PDF: {e}")
+            st.divider()
+
             with st.form("form_cv", border=False):
                 cv_editado = render_editor_cv(cv_data)
                 guardar_cv = st.form_submit_button("Guardar CV", type="primary")
