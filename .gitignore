@@ -1,16 +1,3 @@
 
 .env
-/venv/
-__pycache__
-/.vscode
-/logs
-/data/cv.json
-/data/parametros.json
-/data/vacantes.db
-/data/resultados_evaluacion.json
-/data/backups/*
-/src/test_serpapi.py
-/data/cv.json
-/data/parametros.json
-data/cv.json
-data/cv.json
+.agents

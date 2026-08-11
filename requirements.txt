@@ -1,5 +1,2 @@
-google-genai
-python-dotenv
-requests
-streamlit
-PyPDF2
+strands-agents
+strands-agents-tools
